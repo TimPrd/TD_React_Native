@@ -12,13 +12,14 @@ The aim is to scan barcode and view which ingredients are the most consumed.
 
 - [x] Use native base
 - [x] Scan
+- [x] API fetch
 - [x] Details of a product
+- [x] Save with AsyncStorage
 - [x] Historic
 - [x] Refresh historic
 - [x] Result in list form
 - [x] Result in pie form 
 - [x] Navigation 
-- [ ] Format ingredient id to readable text 
 
 ## Demo : 
 
