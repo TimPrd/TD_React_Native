@@ -1,5 +1,5 @@
-import { StyleSheet, View, RefreshControl, ScrollView } from 'react-native';
-import { Text } from 'native-base';
+import { StyleSheet, View, RefreshControl, ScrollView, Alert } from 'react-native';
+import { Text, Button, Icon } from 'native-base';
 import ListProduct from '../components/ListProduct';
 
 import { AsyncStorage } from 'react-native';
@@ -37,8 +37,10 @@ export default class HistoryScreen extends React.Component {
     async _onRefresh() {
         this.setState({ refreshing: true });
         this.loadStore().then(() => this.setState({ refreshing: false }));
+    }
 
-
+    clearAllHistory() {
+        AsyncStorage.clear();
     }
 
     loadStore = async () => {
@@ -63,8 +65,8 @@ export default class HistoryScreen extends React.Component {
                 />
             }>
                 {!this.state.products.length
-                    ? <Text style={{textAlign:"center", marginTop:"50%"}}>No history...</Text>
-                    : <ListProduct title={this.title} products={this.state.products}></ListProduct>}
+                    ? <Text style={{ textAlign: "center", marginTop: "50%" }}>No history...</Text>
+                    : <ListProduct title={this.title} products={this.state.products} clearHistoryFunction={this.clearAllHistory}></ListProduct>}
             </ScrollView>
         );
     }

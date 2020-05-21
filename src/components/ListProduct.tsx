@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Header, Content, List, ListItem, Text, Left, Body, Right, Title, View, Thumbnail, Separator } from 'native-base';
+import { Container, Header, Content, List, ListItem, Text, Left, Body, Right, Title, View, Thumbnail, Separator, Button, Icon } from 'native-base';
 import { AppLoading } from 'expo';
 export default class ListProduct extends React.Component {
 
@@ -90,6 +90,7 @@ export default class ListProduct extends React.Component {
         if (!this.state.isReady) {
             return <AppLoading />;
         }
+
         return (
             <Container>
                 <Header>
@@ -97,7 +98,11 @@ export default class ListProduct extends React.Component {
                     <Body>
                         <Title>{this.props.title}</Title>
                     </Body>
-                    <Right />
+                    <Right>
+                        <Button danger transparent onPress={() => this.props.clearHistoryFunction()}>
+                            <Icon name="trash" />
+                        </Button>
+                    </Right>
                 </Header>
                 <List dataArray={this.state.products}
                     renderRow={(item) =>
